@@ -128,19 +128,21 @@ File(rootProject.rootDir.path + "/src/main/yaml")
             )
         }
         runAllGraphic.dependsOn(graphic)
-        val batch by basetask("run${capitalizedName}Batch") {
-            group = alchemistGroupBatch
-            description = "Launches batch experiments for $capitalizedName"
-            maxHeapSize = "${minOf(heap.toInt(), Runtime.getRuntime().availableProcessors() * taskSize)}m"
-            File("data").mkdirs()
-            args(
-                "--override",
-                "launcher: { parameters: { batch: [seed, initialNodes, findMax], autoStart: true } }",
-                "--verbosity",
-                "error",
-            )
+        if(capitalizedName.contains("SplitAndMerge")) {
+            val batch by basetask("run${capitalizedName}Batch") {
+                group = alchemistGroupBatch
+                description = "Launches batch experiments for $capitalizedName"
+                maxHeapSize = "${minOf(heap.toInt(), Runtime.getRuntime().availableProcessors() * taskSize)}m"
+                File("data").mkdirs()
+                args(
+                    "--override",
+                    "launcher: { parameters: { batch: [seed, initialNodes, findMax], autoStart: true } }",
+                    "--verbosity",
+                    "error",
+                )
+            }
+            runAllBatch.dependsOn(batch)
         }
-        runAllBatch.dependsOn(batch)
     }
 
 tasks.withType(KotlinCompile::class).all {
