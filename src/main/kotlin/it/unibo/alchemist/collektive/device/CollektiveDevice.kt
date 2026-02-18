@@ -13,7 +13,7 @@ import it.unibo.collektive.aggregate.api.Aggregate
 import it.unibo.collektive.aggregate.api.DataSharingMethod
 import it.unibo.collektive.aggregate.api.neighboring
 import it.unibo.collektive.alchemist.device.sensors.EnvironmentVariables
-import it.unibo.collektive.gossip.FindMaxOf
+import it.unibo.collektive.stdlib.gossip.FindMaxOf
 import it.unibo.collektive.networking.Mailbox
 import it.unibo.collektive.networking.Message
 import it.unibo.collektive.networking.NeighborsData

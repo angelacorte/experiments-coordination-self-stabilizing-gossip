@@ -1,4 +1,4 @@
-package it.unibo.collektive.gossip
+package it.unibo.collektive.stdlib.gossip
 
 import it.unibo.collektive.aggregate.api.Aggregate
 import it.unibo.collektive.aggregate.api.share
