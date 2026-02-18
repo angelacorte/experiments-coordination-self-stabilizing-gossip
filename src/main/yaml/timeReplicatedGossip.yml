@@ -10,7 +10,6 @@ variables:
     max: 1
     step: 1
     default: 0
-#  walking_speed: &walk-speed { default: 1.4, min: 1, max: 2, step: 0.1 }
 
 seeds:
   scenario: *seed
@@ -20,22 +19,12 @@ network-model:
   type: ConnectWithinDistance
   parameters: [8]
 
-#environment:
-#  type: ImageEnvironment
-#  parameters: [rectangle.png]
-
 _pool: &program
   - time-distribution: 1
     type: Event
     actions:
       - type: RunCollektiveProgram
         parameters: [it.unibo.collektive.EntrypointsKt.timeReplicatedGossipEntrypoint]
-#  - time-distribution: 10
-#    type: Event
-#    actions:
-#      - type: LevyWalk
-#        parameters: [ 1.4, 1, 2, 0.1 ]
-
 
 deployments:
   - type: Rectangle
@@ -45,32 +34,3 @@ deployments:
     properties:
       - type: it.unibo.collektive.alchemist.device.sensors.impl.TimeSensorProperty
       - type: it.unibo.collektive.alchemist.device.sensors.impl.RandomNodeProperty
-
-#terminate:
-#  type: AfterTime
-#  parameters: 10
-
-export:
-  - type: CSVExporter
-    parameters:
-      fileNameRoot: *fileName
-      interval: 1.0
-      exportPath: *path
-    data:
-      - time
-      - molecule: best-value
-        aggregators: [ min, max, mean, StandardDeviation ]
-        value-filter: onlyfinite
-        precision: 3
-      - molecule: local-value
-        aggregators: [ min, max, mean, StandardDeviation ]
-        value-filter: onlyfinite
-        precision: 3
-      - molecule: path-length
-        aggregators: [ min, max, mean, StandardDeviation ]
-        value-filter: onlyfinite
-        precision: 3
-      - molecule: neighbors-size
-        aggregators: [ min, max, mean, StandardDeviation ]
-        value-filter: onlyfinite
-        precision: 3

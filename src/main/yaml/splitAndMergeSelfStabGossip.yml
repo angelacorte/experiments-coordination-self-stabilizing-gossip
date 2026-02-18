@@ -22,8 +22,6 @@ variables:
   findMax: &findMax
     type: ArbitraryVariable
     parameters: [ *shouldFindMax, [true, false] ]
-  #    type: SystemEnvVariable
-  #    parameters: [ "FIND_MAX", true ]
   movingRange: &movingRange
     5.0
   width: &width
@@ -32,7 +30,6 @@ variables:
     0
   height: &height
     20
-#  walking_speed: &walk-speed { default: 1.4, min: 1, max: 2, step: 0.1 }
 
 seeds:
   scenario: *seed
@@ -48,11 +45,6 @@ _pool: &program
     actions:
       - type: RunCollektiveProgram
         parameters: [ it.unibo.collektive.experiments.SelfStabGossipKt.selfStabGossipEntrypoint ]
-#  - time-distribution: 10
-#    type: Event
-#    actions:
-#      - type: LevyWalk
-#        parameters: [ 1.4, 1, 2, 0.1 ]
 
 _divide: &divide
   - time-distribution:

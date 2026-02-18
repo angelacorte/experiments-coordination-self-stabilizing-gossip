@@ -30,7 +30,6 @@ variables:
     0
   height: &height
     20
-#  walking_speed: &walk-speed { default: 1.4, min: 1, max: 2, step: 0.1 }
 
 seeds:
   scenario: *seed
@@ -40,21 +39,12 @@ network-model:
   type: ConnectWithinDistance
   parameters: [4]
 
-#environment:
-#  type: ImageEnvironment
-#  parameters: [rectangle.png]
-
 _pool: &program
   - time-distribution: 1
     type: Event
     actions:
       - type: RunCollektiveProgram
         parameters: [ it.unibo.collektive.experiments.NonStabGossipKt.nonStabGossipEntrypoint]
-#  - time-distribution: 10
-#    type: Event
-#    actions:
-#      - type: LevyWalk
-#        parameters: [ 1.4, 1, 2, 0.1 ]
 
 _divide: &divide
   - time-distribution:
