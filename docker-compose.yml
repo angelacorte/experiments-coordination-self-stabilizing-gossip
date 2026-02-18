@@ -9,7 +9,7 @@ services:
     environment:
       - MAX_SEED=31
       - GRADLE_TASK=runSplitAndMergeNonStabGossipBatch
-      -
+
   time-replicated-gossip-split-and-merge:
     image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}-time-replicated
     build:
