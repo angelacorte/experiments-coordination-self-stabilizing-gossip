@@ -1,0 +1,70 @@
+services:
+  non-stabilizing-gossip-split-and-merge:
+    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    build:
+      context: .
+      dockerfile: docker/sim/Dockerfile
+    volumes:
+      - angela.cortecchia-volume:/experiment/data
+    environment:
+      - MAX_SEED=31
+      - GRADLE_TASK=runSplitAndMergeNonStabGossipBatch
+
+  time-replicated-gossip-split-and-merge:
+    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    build:
+      context: .
+      dockerfile: docker/sim/Dockerfile
+    volumes:
+      - angela.cortecchia-volume:/experiment/data
+    environment:
+      - MAX_SEED=31
+      - GRADLE_TASK=runSplitAndMergeTimeRepGossipBatch
+
+  self-stabilizing-gossip-split-and-merge:
+    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    build:
+      context: .
+      dockerfile: docker/sim/Dockerfile
+    volumes:
+      - angela.cortecchia-volume:/experiment/data
+    environment:
+      - MAX_SEED=31
+      - GRADLE_TASK=runSplitAndMergeSelfStabGossipBatch
+
+  self-stabilizing-gossip-walk:
+    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    build:
+      context: .
+      dockerfile: docker/sim/Dockerfile
+    volumes:
+      - angela.cortecchia-volume:/experiment/data
+    environment:
+      - MAX_SEED=31
+      - GRADLE_TASK=runBrownianWalkSelfStabGossipBatch
+
+  non-stabilizing-gossip-walk:
+    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    build:
+      context: .
+      dockerfile: docker/sim/Dockerfile
+    volumes:
+      - angela.cortecchia-volume:/experiment/data
+    environment:
+      - MAX_SEED=31
+      - GRADLE_TASK=runBrownianWalkNonStabGossipBatch
+
+  time-replicated-gossip-walk:
+    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    build:
+      context: .
+      dockerfile: docker/sim/Dockerfile
+    volumes:
+      - angela.cortecchia-volume:/experiment/data
+    environment:
+      - MAX_SEED=31
+      - GRADLE_TASK=runBrownianWalkTimeRepGossipBatch
+
+volumes:
+  angela.cortecchia-volume:
+    external: true

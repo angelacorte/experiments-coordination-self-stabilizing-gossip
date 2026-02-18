@@ -1,0 +1,17 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+.idea/
+.spyproject/
+build/
+#charts/
+data_summary_*
+timeprocessed
+/.kotlin/
+/node_modules/
+/data/
+.DS_Store
+src/main/.DS_Store
+/gossip-sm_mean
+/gossip-sm_std
+/charts/
+/charts0/

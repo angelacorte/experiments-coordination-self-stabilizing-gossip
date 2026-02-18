@@ -1,0 +1,134 @@
+incarnation: collektive
+
+variables:
+  fileName: &fileName
+    "non-stab-gossip-walk"
+  path: &path
+    "data/non-stab-gossip-walk"
+  maxSeed: &maxSeed
+    type: SystemEnvVariable
+    parameters: [ "MAX_SEED", 4 ]
+  seed: &seed
+    min: 0
+    max: *maxSeed
+    step: 1
+    default: 42
+  initialNodes: &initialNodes
+    type: ArbitraryVariable
+    parameters: [ 50, [ 1, 2, 10, 50, 100 ] ]
+  shouldFindMax: &shouldFindMax
+    type: SystemEnvVariable
+    parameters: [ "FIND_MAX", true ]
+  findMax: &findMax
+    type: ArbitraryVariable
+    parameters: [ *shouldFindMax, [true, false] ]
+  movingRange: &movingRange
+    9.0
+  width: &width
+    10
+  leftStart: &leftStart
+    0
+  height: &height
+    20
+#  walking_speed: &walk-speed { default: 0.9, min: 0.7, max: 1.2, step: 0.05 }
+
+seeds:
+  scenario: *seed
+  simulation: *seed
+
+network-model:
+  type: ObstaclesBreakConnection
+  parameters: [4]
+
+environment:
+  type: ImageEnvironment
+  parameters: [square.png, 0.7] # 0.28
+  global-programs:
+    - time-distribution:
+        type: Trigger
+        parameters: [ 1 ]
+      type:  ManageObstacle
+      parameters: [ true, 0, 0, 1, 25]
+    - time-distribution:
+        type: Trigger
+        parameters: [ 1 ]
+      type:  ManageObstacle
+      parameters: [ true, 0, 0, 25, 1]
+    - time-distribution:
+        type: Trigger
+        parameters: [ 1 ]
+      type: ManageObstacle
+      parameters: [ true, 20, 0, 1, 25 ]
+    - time-distribution:
+        type: Trigger
+        parameters: [ 1 ]
+      type:  ManageObstacle
+      parameters: [ true, 0, 20, 25, 1]
+    - time-distribution:
+        type: Trigger
+        parameters: [ 50 ]
+      type:  ManageObstacle
+      parameters: [ true, *movingRange, *leftStart, 2, 30]
+    - time-distribution:
+        type: Trigger
+        parameters: [ 150 ]
+      type:  ManageObstacle
+      parameters: [ false, *movingRange, *movingRange, 2, 10 ]
+
+
+_pool: &program
+  - time-distribution: 1
+    type: Event
+    actions:
+      - type: RunCollektiveProgram
+        parameters: [it.unibo.collektive.experiments.NonStabGossipKt.nonStabGossipEntrypoint]
+  - time-distribution: 10
+    type: Event
+    actions:
+      - type: BrownianMove
+        parameters: 0.1
+
+deployments:
+  - type: Rectangle
+    parameters: [*initialNodes, *leftStart, 0, *width, *height]
+    programs:
+      - *program
+    contents:
+      - molecule: findMax
+        concentration: *findMax
+    properties:
+      - type: it.unibo.collektive.alchemist.device.sensors.impl.TimeSensorProperty
+      - type: it.unibo.collektive.alchemist.device.sensors.impl.RandomNodeProperty
+
+  - type: Rectangle
+    parameters: [*initialNodes, *width, 0, *width, *height]
+    programs:
+      - *program
+    contents:
+      - molecule: findMax
+        concentration: *findMax
+    properties:
+      - type: it.unibo.collektive.alchemist.device.sensors.impl.TimeSensorProperty
+      - type: it.unibo.collektive.alchemist.device.sensors.impl.RandomNodeProperty
+
+terminate:
+  type: AfterTime
+  parameters: 200
+
+export:
+  - type: CSVExporter
+    parameters:
+      fileNameRoot: *fileName
+      interval: 1.0
+      exportPath: *path
+    data:
+      - time
+      - type: NumberOfNodes
+      - type: ErrorExtractor
+        parameters: [*findMax]
+      - molecule: MessageSize
+        aggregators: [ max, mean, variance, median, StandardDeviation ]
+        value-filter: onlyfinite
+        precision: 3
+      - molecule: MessageSize
+        aggregators: [ Sum ]
