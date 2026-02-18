@@ -1,6 +1,6 @@
 services:
   non-stabilizing-gossip-split-and-merge:
-    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
@@ -11,7 +11,7 @@ services:
       - GRADLE_TASK=runSplitAndMergeNonStabGossipBatch
 
   time-replicated-gossip-split-and-merge:
-    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
@@ -22,7 +22,7 @@ services:
       - GRADLE_TASK=runSplitAndMergeTimeRepGossipBatch
 
   self-stabilizing-gossip-split-and-merge:
-    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
@@ -33,7 +33,7 @@ services:
       - GRADLE_TASK=runSplitAndMergeSelfStabGossipBatch
 
   self-stabilizing-gossip-walk:
-    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
@@ -44,7 +44,7 @@ services:
       - GRADLE_TASK=runBrownianWalkSelfStabGossipBatch
 
   non-stabilizing-gossip-walk:
-    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
@@ -55,7 +55,7 @@ services:
       - GRADLE_TASK=runBrownianWalkNonStabGossipBatch
 
   time-replicated-gossip-walk:
-    image: angelacortecchia/experiments-2025-self-stabilizing-gossip:${VERSION:-latest}
+    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
