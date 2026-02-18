@@ -134,7 +134,7 @@ please refer to the [Alchemist documentation](https://alchemistsimulator.github.
 - run:
 ```bash
 # simple gossip experiment with default parameters and graphical interface
-curl https://raw.githubusercontent.com/angelacorte/experiments-2025-self-stabilizing-gossip/master/run-gossip.sh | bash 
+curl https://raw.githubusercontent.com/angelacorte/experiments-coordination-self-stabilizing-gossip/master/run-gossip.sh | bash 
 ```
 - the repository is in your `Downloads` folder for further inspection.
 
