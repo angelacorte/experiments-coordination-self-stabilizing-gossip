@@ -55,6 +55,9 @@ class CollektiveDevice<P>(
     val currentTime: Time
         get() = environment.simulationOrNull?.time ?: Time.ZERO
 
+    /**
+     * The current time as [Instant].
+     */
     @OptIn(ExperimentalTime::class)
     fun getTimeAsInstant(): Instant {
         val time: Double = environment.simulation.time.toDouble()

@@ -23,7 +23,8 @@ import kotlin.math.sqrt
  * Exported columns:
  * - `RMSE`: root mean squared error
  *
- * If [shouldFindMax] is true, the consensus target is the maximum of `local-value` in each component; otherwise the minimum.
+ * If [shouldFindMax] is true, the consensus target is the maximum of `local-value` in each component;
+ * otherwise the minimum.
  */
 class ErrorExtractor(
     val shouldFindMax: Boolean = true,
@@ -42,7 +43,8 @@ class ErrorExtractor(
         val subnetworks = environment.allSubNetworksWithHopDistance()
         var rmse = 0.0
         subnetworks.forEach { subnetwork ->
-            val available = subnetwork.nodes.filter { node -> node.contains(localMolecule) && node.contains(gossipMolecule) }
+            val available = subnetwork.nodes
+                .filter { node -> node.contains(localMolecule) && node.contains(gossipMolecule) }
             val localValues = available.map { it.getConcentration(localMolecule) as Double }
             val shouldGossip =
                 when {
