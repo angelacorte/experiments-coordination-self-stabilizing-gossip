@@ -4,6 +4,7 @@ import it.unibo.collektive.aggregate.api.Aggregate
 import it.unibo.collektive.alchemist.device.sensors.EnvironmentVariables
 import it.unibo.collektive.alchemist.device.sensors.RandomGenerator
 import it.unibo.collektive.alchemist.device.sensors.TimeSensor
+import it.unibo.collektive.experiments.gossipMin
 import it.unibo.collektive.stdlib.gossip.FindMaxOf.findMaxOf
 import it.unibo.collektive.utils.randomFromTimeElapsed
 
@@ -15,7 +16,11 @@ import it.unibo.collektive.utils.randomFromTimeElapsed
  *
  * @param env variables/molecules exposed by the simulator (Alchemist), used here only for output.
  */
-fun Aggregate<Int>.gossipEntrypoint(env: EnvironmentVariables) = gossipMin(localId).also { env["gossip-value"] = it }
+fun Aggregate<Int>.gossipEntrypoint(env: EnvironmentVariables) = if (env["findMax"]) {
+    gossipMax(localId)
+} else {
+    gossipMin(localId)
+}.also { env["gossip-value"] = it }
 
 /**
  * Entrypoint for the self-stabilizing min/max consensus gossip based on path-loop detection.
