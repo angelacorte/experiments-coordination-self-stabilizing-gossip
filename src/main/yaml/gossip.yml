@@ -10,6 +10,10 @@ variables:
     max: 1
     step: 1
     default: 0
+  shouldFindMax:
+    type: SystemEnvVariable
+    parameters: [ "FIND_MAX", true ]
+  totalNodes: &totalNodes 50
 
 seeds:
   scenario: *seed
@@ -28,7 +32,7 @@ _pool: &program
 
 deployments:
   - type: Rectangle
-    parameters: [ 50, 2, 2, 50, 50 ]
+    parameters: [ *totalNodes, 2, 2, 50, 50 ]
     programs:
       - *program
     properties:
