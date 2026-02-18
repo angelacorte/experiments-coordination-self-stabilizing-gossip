@@ -1,3 +1,27 @@
+## 1.0.0 (2026-02-18)
+
+### Bug Fixes
+
+* **docker-compose:** give each service a unique image tag ([920bd50](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/920bd50ba784f5bc6e218d54d2518cac00e63f23))
+* **docker-compose:** typo ([4c40c72](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/4c40c72e01309e390a4fd78655d332794c6d12dc))
+* remove forked release version number ([e2cf143](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/e2cf14350e2403bcdb9a037e9ce09c4a855bb65b))
+* remove old simulations ([2c6ab2b](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/2c6ab2ba954fa8fac1c7525a5896fb7d05e7586c))
+* remove unused implementations ([56cd48f](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/56cd48f21ab85d13fce66194fd7feb8444f55cb6))
+* remove wrong imports ([df48e7c](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/df48e7c2776b7d054c220912c32998dbc4b37d39))
+* update correct version number ([51ccb99](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/51ccb99fa09d0666aa097109e0ae836509656019))
+* update entrypoint name ([b983b52](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/b983b52468f574e5f8485276f448e633226be678))
+* update project name ([c3f4f2a](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/c3f4f2a9c506232b623a5f88f0e4d8513bed2699))
+
+### General maintenance
+
+* **build:** enable batch simulation only for split and merge scenarios ([87af0cc](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/87af0cc9e6126723275aae6972b6802f175704c8))
+* remove useless comments ([841cfa0](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/841cfa09b246a94820312badc01da058b8d619b9))
+
+### Refactoring
+
+* move gossip implementation into stdlib package ([c196480](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/c1964802edde6c85b60fd1090081ea7b682c6f59))
+* remove unused action ([28807ac](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/28807ac6dbcba03455faf2066f7b1f99e535c7ed))
+
 ## [1.11.1](https://github.com/angelacorte/experiments-2025-self-stabilizing-gossip/compare/1.11.0...1.11.1) (2026-02-17)
 
 ### Bug Fixes
