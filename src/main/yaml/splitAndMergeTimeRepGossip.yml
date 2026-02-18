@@ -13,7 +13,7 @@ variables:
     max: *maxSeed
     step: 1
     default: 42
-  initialNodes: &initialNodes
+  totalNodes: &totalNodes
     type: ArbitraryVariable
     parameters: [ 50, [ 1, 2, 10, 50, 100 ] ]
   shouldFindMax: &shouldFindMax
@@ -66,7 +66,7 @@ _merging: &merging
 
 deployments:
   - type: Rectangle
-    parameters: [*initialNodes, *leftStart, 0, *width, *height]
+    parameters: [*totalNodes, *leftStart, 0, *width, *height]
     programs:
       - *program
     contents:
@@ -76,7 +76,7 @@ deployments:
       - type: it.unibo.collektive.alchemist.device.sensors.impl.TimeSensorProperty
       - type: it.unibo.collektive.alchemist.device.sensors.impl.RandomNodeProperty
   - type: Rectangle
-    parameters: [*initialNodes, *width, 0, *width, *height]
+    parameters: [*totalNodes, *width, 0, *width, *height]
     programs:
       - *program
       - *divide
