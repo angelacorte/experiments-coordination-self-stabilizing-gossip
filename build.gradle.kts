@@ -6,7 +6,6 @@ import java.util.Locale
 plugins {
     alias(libs.plugins.gitSemVer)
     alias(libs.plugins.kotlin.multiplatform) apply false
-//    alias(libs.plugins.kotlin.qa)
     alias(libs.plugins.multiJvmTesting) // Pre-configures the Java toolchains
     alias(libs.plugins.taskTree) // Helps debugging dependencies among gradle tasks
     alias(libs.plugins.kotlin.jvm)
