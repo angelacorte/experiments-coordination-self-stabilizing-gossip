@@ -13,9 +13,7 @@ import it.unibo.collektive.aggregate.api.Aggregate
 import it.unibo.collektive.aggregate.api.DataSharingMethod
 import it.unibo.collektive.aggregate.api.neighboring
 import it.unibo.collektive.alchemist.device.sensors.EnvironmentVariables
-import it.unibo.collektive.gossip.CheckOnSelfInPathGossip
 import it.unibo.collektive.gossip.FindMaxOf
-import it.unibo.collektive.gossip.SlowSelfStabGossip
 import it.unibo.collektive.networking.Mailbox
 import it.unibo.collektive.networking.Message
 import it.unibo.collektive.networking.NeighborsData
@@ -108,8 +106,6 @@ class CollektiveDevice<P>(
         kryo.register(ArrayList::class.java)
         kryo.register(PathValue::class.java)
         kryo.register(TimedReplica::class.java)
-        kryo.register(SlowSelfStabGossip.GossipValue::class.java)
-        kryo.register(CheckOnSelfInPathGossip.GossipValue::class.java)
         kryo.register(FindMaxOf.GossipValue::class.java)
         kryo.register(Class.forName($$"java.util.Collections$SingletonSet"))
         if (outboundMessage.isNotEmpty()) {
