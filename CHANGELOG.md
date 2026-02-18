@@ -1,3 +1,36 @@
+## [1.1.0](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.0.0...1.1.0) (2026-02-18)
+
+### Features
+
+* add script to automate gossip experiment setup and execution ([45a5ccf](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/45a5ccfa86a50ab99b8059ac6a06d0fea225b4a3))
+* add support for dynamic max finding in gossip algorithm ([8a415ac](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/8a415acb0f92261430cee600c4cd33c2572c914c))
+* add support for dynamic max finding in gossip algorithm ([11d935c](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/11d935c4403eda1eabfe46da16e9b956bdfda5e6))
+* rename initialNodes to totalNodes in gossip configuration files ([7aaea26](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/7aaea2684da0bcf040eff02463b1a650c82f1aa6))
+
+### Bug Fixes
+
+* remove kotlin qa ([4eba355](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/4eba355bba779da0dc03270857cf75eda84945e8))
+* update gossip entrypoint ([634d696](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/634d696e03bcc54a9768169f972a8a2192955108))
+
+### Documentation
+
+* add missing documentation ([02f7baa](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/02f7baa8fc62fcb2fd442d00c0109719359accfa))
+
+### General maintenance
+
+* **plugins:** enable kotlin.qa ([df54e55](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/df54e55025d1e66cfc016f3f4079e76b321106ca))
+* **release:** update gradle.properties .env versions to 1.0.0 [skip ci] ([ea56283](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/ea562831ad51470a18287eb639e14c030f1ecd67))
+* update readme ([5fc13f7](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/5fc13f726ccac1e624dd8bc8e0bac20de1b7454a))
+
+### Style improvements
+
+* adapt to ktlint ([04acaee](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/04acaee0217efddc72cd016c8ca4b17ec4c57cce))
+
+### Refactoring
+
+* remove unused simulations ([9bf02b1](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/9bf02b197c85dc17395a43976ebda2a41822c966))
+* simplify error metrics extraction by removing unused calculations ([cf02624](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/cf026244e4938094f62a973553fc7a786e548a7d))
+
 ## 1.0.0 (2026-02-18)
 
 ### Bug Fixes
