@@ -6,7 +6,7 @@ import java.util.Locale
 plugins {
     alias(libs.plugins.gitSemVer)
     alias(libs.plugins.kotlin.multiplatform) apply false
-//    alias(libs.plugins.kotlin.qa)
+    alias(libs.plugins.kotlin.qa)
     alias(libs.plugins.multiJvmTesting) // Pre-configures the Java toolchains
     alias(libs.plugins.taskTree) // Helps debugging dependencies among gradle tasks
     alias(libs.plugins.kotlin.jvm)
@@ -128,7 +128,7 @@ File(rootProject.rootDir.path + "/src/main/yaml")
             )
         }
         runAllGraphic.dependsOn(graphic)
-        if(capitalizedName.contains("SplitAndMerge")) {
+        if (capitalizedName.contains("SplitAndMerge")) {
             val batch by basetask("run${capitalizedName}Batch") {
                 group = alchemistGroupBatch
                 description = "Launches batch experiments for $capitalizedName"
