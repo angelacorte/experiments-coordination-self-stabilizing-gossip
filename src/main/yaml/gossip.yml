@@ -10,7 +10,7 @@ variables:
     max: 1
     step: 1
     default: 0
-  shouldFindMax:
+  findMax: &findMax
     type: SystemEnvVariable
     parameters: [ "FIND_MAX", true ]
   totalNodes: &totalNodes 50
@@ -28,13 +28,16 @@ _pool: &program
     type: Event
     actions:
       - type: RunCollektiveProgram
-        parameters: [it.unibo.collektive.EntrypointsKt.gossipEntrypoint]
+        parameters: [ it.unibo.collektive.experiments.SelfStabGossipKt.gossipEntrypoint]
 
 deployments:
   - type: Rectangle
     parameters: [ *totalNodes, 2, 2, 50, 50 ]
     programs:
       - *program
+    contents:
+      - molecule: findMax
+        concentration: *findMax
     properties:
       - type: it.unibo.collektive.alchemist.device.sensors.impl.TimeSensorProperty
       - type: it.unibo.collektive.alchemist.device.sensors.impl.RandomNodeProperty
