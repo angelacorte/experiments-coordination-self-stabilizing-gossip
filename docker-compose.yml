@@ -1,6 +1,6 @@
 services:
   non-stabilizing-gossip-split-and-merge:
-    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}
+    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}-non-stabilizing
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
@@ -9,9 +9,9 @@ services:
     environment:
       - MAX_SEED=31
       - GRADLE_TASK=runSplitAndMergeNonStabGossipBatch
-
+      -
   time-replicated-gossip-split-and-merge:
-    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}
+    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}-time-replicated
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
@@ -22,7 +22,7 @@ services:
       - GRADLE_TASK=runSplitAndMergeTimeRepGossipBatch
 
   self-stabilizing-gossip-split-and-merge:
-    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}
+    image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}-self-stabilizing
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
