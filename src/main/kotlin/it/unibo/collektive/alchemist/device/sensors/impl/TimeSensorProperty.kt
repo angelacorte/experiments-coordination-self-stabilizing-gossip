@@ -9,6 +9,12 @@ import kotlin.time.Duration.Companion.seconds
 import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
+/**
+ * Alchemist [NodeProperty] implementing [TimeSensor] by reading the current simulation clock.
+ *
+ * The [Instant] is built by offsetting from [Instant.DISTANT_PAST] by the simulation time expressed in seconds.
+ * This keeps the mapping deterministic and independent from wall-clock time.
+ */
 class TimeSensorProperty<T : Any, P : Position<P>>(
     private val environment: Environment<T, P>,
     override val node: Node<T>,

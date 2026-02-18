@@ -5,6 +5,12 @@ import it.unibo.alchemist.model.NodeProperty
 import it.unibo.alchemist.util.RandomGenerators.nextDouble
 import org.apache.commons.math3.random.RandomGenerator
 
+/**
+ * Alchemist [NodeProperty] that exposes a seeded [RandomGenerator] as a Collektive [it.unibo.collektive.alchemist.device.sensors.RandomGenerator].
+ *
+ * This is meant to be installed on each node via YAML, so aggregate programs can access deterministic
+ * randomness (deterministic with respect to the simulation seed).
+ */
 class RandomNodeProperty<T>(
     override val node: Node<T>,
     private val randomGenerator: RandomGenerator,
