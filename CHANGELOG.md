@@ -1,3 +1,15 @@
+## [1.1.1](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.0...1.1.1) (2026-02-18)
+
+### Bug Fixes
+
+* add abstract in readme ([74ce9fd](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/74ce9fd139bf3b5f454e5beb329cb34e06040b2d))
+* date in script not working ([2019fc8](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/2019fc80db4650f926200e71de506eae166e6883))
+* repo name for fast run ([2b57da6](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/2b57da66d8cc889a17a748cc075db7ac1370600f))
+
+### General maintenance
+
+* **release:** update gradle.properties .env versions to 1.1.0 [skip ci] ([cdb8ba4](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/cdb8ba4c355f15cf7907964cd9f7201ebba1311b))
+
 ## [1.1.0](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.0.0...1.1.0) (2026-02-18)
 
 ### Features
