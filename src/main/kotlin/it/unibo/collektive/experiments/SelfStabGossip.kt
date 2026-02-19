@@ -67,7 +67,7 @@ fun <T : Comparable<T>> compareValuesReversed(
 inline fun <reified ID : Comparable<ID>, T : Comparable<T>> Aggregate<ID>.gossipMin(local: T): T =
     findMaxOf(
         local,
-        comparator = ::compareValues,
+        comparator = ::compareValuesReversed,
     )
 
 /**
@@ -79,5 +79,5 @@ inline fun <reified ID : Comparable<ID>, T : Comparable<T>> Aggregate<ID>.gossip
 inline fun <reified ID : Comparable<ID>, T : Comparable<T>> Aggregate<ID>.gossipMax(local: T): T =
     findMaxOf(
         local,
-        comparator = ::compareValuesReversed,
+        comparator = ::compareValues,
     )
