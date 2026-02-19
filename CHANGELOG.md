@@ -1,3 +1,16 @@
+## [1.1.3](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.2...1.1.3) (2026-02-19)
+
+### Bug Fixes
+
+* adjust color indexing in plot function ([ef5cbcd](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/ef5cbcd136635755958f903ea44183f16468840c))
+* change time rep parameters ([6476cd4](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/6476cd4b79dcf4bdb377d2fffe4028a4bfd1e450))
+* remove useless class registrations in kryo ([ba34284](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/ba34284ae40fe47215a608324cd1a3be181a3479))
+* update abstract in readme ([3f5910d](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/3f5910d0d331681efeb4c6f29e4eb083fe178664))
+
+### General maintenance
+
+* **release:** update gradle.properties .env versions to 1.1.2 [skip ci] ([c63e5dc](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/c63e5dc557e796cf3332a68cc770d315faa06f74))
+
 ## [1.1.2](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.1...1.1.2) (2026-02-19)
 
 ### Bug Fixes
