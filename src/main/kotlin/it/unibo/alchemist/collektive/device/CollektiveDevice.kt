@@ -101,16 +101,12 @@ class CollektiveDevice<P>(
         val defaultHashedPathSize = 32
         val kryo = Kryo()
         kryo.register(Int::class.java)
-        kryo.register(Set::class.java)
         kryo.register(Double::class.java)
         kryo.register(Instant::class.java)
-        kryo.register(Boolean::class.java)
         kryo.register(Duration::class.java)
         kryo.register(ArrayList::class.java)
-        kryo.register(PathValue::class.java)
         kryo.register(TimedReplica::class.java)
         kryo.register(FindMaxOf.GossipValue::class.java)
-        kryo.register(Class.forName($$"java.util.Collections$SingletonSet"))
         if (outboundMessage.isNotEmpty()) {
             val neighborsNodes = environment.getNeighborhood(node)
             if (!neighborsNodes.isEmpty) {
