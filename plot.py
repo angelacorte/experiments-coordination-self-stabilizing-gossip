@@ -207,7 +207,7 @@ if __name__ == '__main__':
     # How to name the summary of the processed data
     pickleOutput = f'gossip-sm'
     # Experiment prefixes: one per experiment (root of the file name)
-    experiments = ['self-stab-gossip-sm', 'non-stab-gossip-sm', 'time-rep-gossip-sm', 'self-stab-gossip-walk', 'non-stab-gossip-walk', 'time-rep-gossip-walk'] #'messages-self-construction-fixed-leader',
+    experiments = ['self-stab-gossip-sm', 'non-stab-gossip-sm', 'time-rep-gossip-sm'] #'messages-self-construction-fixed-leader',
     floatPrecision = '{: 0.3f}'
     # Number of time samples
     timeSamples = 200
@@ -509,7 +509,7 @@ def plot_experiments_comparison(data, metric, nodes, selector, y_label='', walk=
     plt.close()
 
 from matplotlib import pyplot as plt
-simType = ['sm', 'walk']
+simType = ['sm']
 metrics = ['RMSE'] #'MEAN',, 'MAE'
 initialNodes = [2, 10, 50, 100]
 findMax = [True, False]
@@ -519,10 +519,10 @@ for experiment in experiments:
     for metric_to_plot in metrics:
         for selector in findMax:
             data_dict = {}
-            for nodes in initialNodes:
-                mean = np.where(np.isnan(means[experiment][metric_to_plot].sel(dict(findMax=selector, initialNodes=nodes)).values), 0.0, means[experiment][metric_to_plot].sel(dict(findMax=selector, initialNodes=nodes)).values)
-                nodes_series = np.where(np.isnan(means[experiment]['nodes'].sel(dict(findMax=selector, initialNodes=nodes)).values), 0.0, means[experiment]['nodes'].sel(dict(findMax=selector, initialNodes=nodes)).values)
-                time_series = means[experiment]['MEAN'].sel(dict(findMax=selector, initialNodes=nodes))['time'].values
+            for nodes in totalNodes:
+                mean = np.where(np.isnan(means[experiment][metric_to_plot].sel(dict(findMax=selector, totalNodes=nodes)).values), 0.0, means[experiment][metric_to_plot].sel(dict(findMax=selector, totalNodes=nodes)).values)
+                nodes_series = np.where(np.isnan(means[experiment]['nodes'].sel(dict(findMax=selector, totalNodes=nodes)).values), 0.0, means[experiment]['nodes'].sel(dict(findMax=selector, totalNodes=nodes)).values)
+                time_series = means[experiment].sel(dict(findMax=selector, totalNodes=nodes))['time'].values
 
                 df_mean = pd.DataFrame({
                     'time': time_series,
@@ -532,8 +532,8 @@ for experiment in experiments:
 
                 df_std = pd.DataFrame({
                     'time': time_series,
-                    f'{metric_to_plot}-std': stdevs[experiment][metric_to_plot].sel(dict(findMax=selector, initialNodes=nodes)).values,
-                    'nodes-std': stdevs[experiment]['nodes'].sel(dict(findMax=selector, initialNodes=nodes)).values,
+                    f'{metric_to_plot}-std': stdevs[experiment][metric_to_plot].sel(dict(findMax=selector, totalNodes=nodes)).values,
+                    'nodes-std': stdevs[experiment]['nodes'].sel(dict(findMax=selector, totalNodes=nodes)).values,
                 })
 
                 data_dict[(f"{nodes}", nodes * 2, selector)] = (df_mean, df_std)
@@ -551,11 +551,11 @@ for metric in metric_to_plot:
     for experiment in experiments:
         for selector in findMax:
             data_dict = {}
-            for initNodes in initialNodes:
-                mean_mean = np.where(np.isnan(means[experiment]['MessageSize[mean]'].sel(dict(findMax=selector, initialNodes=initNodes)).values), 0.0, means[experiment]['MessageSize[mean]'].sel(dict(findMax=selector, initialNodes=initNodes)).values) # / 1024
-                mean_sum = np.where(np.isnan(means[experiment]['MessageSize[Sum]'].sel(dict(findMax=selector, initialNodes=initNodes)).values), 0.0, means[experiment]['MessageSize[Sum]'].sel(dict(findMax=selector, initialNodes=initNodes)).values) / 1024
-                nodes_series = np.where(np.isnan(means[experiment]['nodes'].sel(dict(findMax=selector, initialNodes=initNodes)).values), 0.0, means[experiment]['nodes'].sel(dict(findMax=selector, initialNodes=initNodes)).values)
-                time_series = means[experiment]['MessageSize[mean]'].sel(dict(findMax=selector, initialNodes=initNodes))['time'].values
+            for initNodes in totalNodes:
+                mean_mean = np.where(np.isnan(means[experiment]['MessageSize[mean]'].sel(dict(findMax=selector, totalNodes=initNodes)).values), 0.0, means[experiment]['MessageSize[mean]'].sel(dict(findMax=selector, totalNodes=initNodes)).values) # / 1024
+                mean_sum = np.where(np.isnan(means[experiment]['MessageSize[Sum]'].sel(dict(findMax=selector, totalNodes=initNodes)).values), 0.0, means[experiment]['MessageSize[Sum]'].sel(dict(findMax=selector, totalNodes=initNodes)).values) / 1024
+                nodes_series = np.where(np.isnan(means[experiment]['nodes'].sel(dict(findMax=selector, totalNodes=initNodes)).values), 0.0, means[experiment]['nodes'].sel(dict(findMax=selector, totalNodes=initNodes)).values)
+                time_series = means[experiment]['MessageSize[mean]'].sel(dict(findMax=selector, totalNodes=initNodes))['time'].values
 
                 df_mean = pd.DataFrame({
                     'time': time_series,
@@ -566,9 +566,9 @@ for metric in metric_to_plot:
 
                 df_std = pd.DataFrame({
                     'time': time_series,
-                    'MessageSize[mean]-std': stdevs[experiment]['MessageSize[mean]'].sel(dict(findMax=selector, initialNodes=initNodes)).values, # / 1024,
-                    'MessageSize[Sum]-std': stdevs[experiment]['MessageSize[Sum]'].sel(dict(findMax=selector, initialNodes=initNodes)).values / 1024,
-                    'nodes-std': stdevs[experiment]['nodes'].sel(dict(findMax=selector, initialNodes=initNodes)).values,
+                    'MessageSize[mean]-std': stdevs[experiment]['MessageSize[mean]'].sel(dict(findMax=selector, totalNodes=initNodes)).values, # / 1024,
+                    'MessageSize[Sum]-std': stdevs[experiment]['MessageSize[Sum]'].sel(dict(findMax=selector, totalNodes=initNodes)).values / 1024,
+                    'nodes-std': stdevs[experiment]['nodes'].sel(dict(findMax=selector, totalNodes=initNodes)).values,
                 })
 
                 data_dict[(f"findMax-{selector}", selector),(f"nodes-{initNodes}", initNodes)] = (df_mean, df_std)
@@ -610,7 +610,7 @@ if max_message_size_sum > 0:
 for sim in simType:
     for metric_to_plot in metrics:
         for selector in findMax:
-            for nodes in initialNodes:
+            for nodes in totalNodes:
 
                 comparison_data = {}
                 walk=''
@@ -619,18 +619,18 @@ for sim in simType:
                     mean = np.where(
                         np.isnan(
                             means[experiment][metric_to_plot]
-                            .sel(dict(findMax=selector, initialNodes=nodes))
+                            .sel(dict(findMax=selector, totalNodes=nodes))
                             .values
                         ),
                         0.0,
                         means[experiment][metric_to_plot]
-                        .sel(dict(findMax=selector, initialNodes=nodes))
+                        .sel(dict(findMax=selector, totalNodes=nodes))
                         .values
                     )
 
                     time_series = (
                         means[experiment][metric_to_plot]
-                        .sel(dict(findMax=selector, initialNodes=nodes))
+                        .sel(dict(findMax=selector, totalNodes=nodes))
                         ['time']
                         .values
                     )
@@ -644,7 +644,7 @@ for sim in simType:
                         'time': time_series,
                         f'{metric_to_plot}-std': (
                             stdevs[experiment][metric_to_plot]
-                            .sel(dict(findMax=selector, initialNodes=nodes))
+                            .sel(dict(findMax=selector, totalNodes=nodes))
                             .values
                         ),
                     })
@@ -667,14 +667,14 @@ message_metrics = ['MessageSize[mean]', 'MessageSize[Sum]']
 for sim in simType:
     for metric_to_plot in message_metrics:
         for selector in findMax:
-            for nodes in initialNodes:
+            for nodes in totalNodes:
 
                 comparison_data = {}
 
                 experimentsType = [exp for exp in experiments if sim in exp]
                 for experiment in experimentsType:
                     raw_mean = means[experiment][metric_to_plot].sel(
-                        dict(findMax=selector, initialNodes=nodes)
+                        dict(findMax=selector, totalNodes=nodes)
                     ).values
 
                     # Unit handling (consistent with existing plots)
@@ -685,7 +685,7 @@ for sim in simType:
 
                     time_series = (
                         means[experiment][metric_to_plot]
-                        .sel(dict(findMax=selector, initialNodes=nodes))
+                        .sel(dict(findMax=selector, totalNodes=nodes))
                         ['time']
                         .values
                     )
@@ -696,7 +696,7 @@ for sim in simType:
                     })
 
                     raw_std = stdevs[experiment][metric_to_plot].sel(
-                        dict(findMax=selector, initialNodes=nodes)
+                        dict(findMax=selector, totalNodes=nodes)
                     ).values
 
                     if metric_to_plot == 'MessageSize[Sum]':
