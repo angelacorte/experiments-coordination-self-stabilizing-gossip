@@ -34,27 +34,29 @@ Alma Mater Studiorum --- Università di Bologna - Cesena, Italy*
 ## About
 
 In large-scale distributed systems, such as the Internet of Things (IoT),
-consensus gossip algorithms provide an efficient mechanism for collective coordination by enabling nodes to exchange and aggregate information locally.
+min-max consensus algorithms provide a mechanism for collective coordination
+by enabling nodes to converge on a ``best'' value produced by one of the participants in the computation.
 However,
-such algorithms are not self-stabilizing:
-once a value is merged into the aggregate
-it cannot be retracted,
+min-max consensus algorithms are monotonic and non-self-stabilizing by nature:
+once a value is merged into the aggregate it cannot be retracted,
 leading to propagation of stale or incorrect data in the presence of transient faults or topology changes.
 In this work,
-we propose a novel self-stabilizing gossip ensuring convergence to the best available value in the network
-by propagating only validated information through shortest valid paths.
+we propose a novel self-stabilizing min-max consensus algorithm
+ensuring convergence to the best available value in the network
+by propagating information along shortest valid paths.
 Each gossip message carries a value and path of nodes that have acknowledged it,
 enabling loop-freedom and natural pruning of obsolete contributions.
-We rely on field-based coordination and specifically the \acl{ac} paradigm to present the algorithm, prove self-stabilization, 
-provide an implementation as a reusable library for the \ck{} DSL, 
-and finally empirically demonstrate that the proposed solution preserves the locality and lightweight nature of gossip while ensuring global consistency and robustness to disconnections.
+We rely on field-based coordination and specifically the \acl{ac}
+paradigm to present the algorithm, prove self-stabilization,
+and
+provide an implementation as a reusable library for the \ck{} DSL.
+%and finally empirically demonstrate that the proposed solution preserves the locality
+%and lightweight nature of gossip while ensuring global consistency and robustness to disconnections.
 This work contributes a foundational building block for resilient coordination in pervasive computing systems,
 paving the way to more complex,
 self-stabilizing distributed applications.
 
 ### Experiments
-
-TODO
 
 Included experiments and what they demonstrate:
 
