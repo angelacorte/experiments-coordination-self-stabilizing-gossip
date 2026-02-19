@@ -41,22 +41,19 @@ class ErrorExtractor(
         val localMolecule = SimpleMolecule("local-value")
         val gossipMolecule = SimpleMolecule("gossip-value")
         val subnetworks = environment.allSubNetworksWithHopDistance()
-        var rmse = 0.0
-        subnetworks.forEach { subnetwork ->
+        val rmse: Double = subnetworks.sumOf { subnetwork ->
             val available = subnetwork.nodes
                 .filter { node -> node.contains(localMolecule) && node.contains(gossipMolecule) }
-            val localValues = available.map { it.getConcentration(localMolecule) as Double }
-            val shouldGossip =
-                when {
-                    shouldFindMax -> localValues.maxOrNull()
-                    else -> localValues.minOrNull()
-                }
-            if (shouldGossip != null) {
-                val values = available.map { it.getConcentration(gossipMolecule) as Double }
-                rmse += sqrt(values.sumOf { gossiping -> (shouldGossip - gossiping).pow(2) } / values.size)
+                .map { it.getConcentration(localMolecule) as Double to it.getConcentration(gossipMolecule) as Double }
+            val expectedValue: Double? = when {
+                shouldFindMax -> available.maxByOrNull { it.first }?.first
+                else -> available.minByOrNull { it.first }?.first
+            }
+            when (expectedValue) {
+                null -> 0.0
+                else -> sqrt(available.sumOf { (_, gossiping) -> (expectedValue - gossiping).pow(2) }) / available.size
             }
         }
-        val errors = listOf(rmse).map { it / subnetworks.size }
-        return columnNames.zip(errors).toMap()
+        return columnNames.zip(listOf(rmse)).toMap()
     }
 }
