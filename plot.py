@@ -513,7 +513,7 @@ simType = ['sm']
 metrics = ['RMSE'] #'MEAN',, 'MAE'
 initialNodes = [2, 10, 50, 100]
 findMax = [True, False]
-experiments = ['self-stab-gossip-sm', 'non-stab-gossip-sm', 'time-rep-gossip-sm', 'self-stab-gossip-walk', 'non-stab-gossip-walk', 'time-rep-gossip-walk']
+experiments = ['self-stab-gossip-sm', 'non-stab-gossip-sm', 'time-rep-gossip-sm']
 
 for experiment in experiments:
     for metric_to_plot in metrics:
