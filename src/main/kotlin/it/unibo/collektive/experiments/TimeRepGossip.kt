@@ -1,6 +1,7 @@
 package it.unibo.collektive.experiments
 
 import it.unibo.alchemist.collektive.device.CollektiveDevice
+import it.unibo.alchemist.util.Environments.networkDiameter
 import it.unibo.collektive.aggregate.api.Aggregate
 import it.unibo.collektive.alchemist.device.sensors.EnvironmentVariables
 import it.unibo.collektive.alchemist.device.sensors.RandomGenerator
@@ -16,7 +17,7 @@ import kotlin.time.ExperimentalTime
  *
  * Current parameters are intentionally kept small and constant for experiments:
  * - `maxReplicas = 4`
- * - `timeToSpawn = 3s`
+ * - `timeToSpawn = 9s`
  *
  * @param device the Alchemist/Collektive bridge, used here to read the current simulation time.
  * @param process the computation to replicate.
@@ -30,7 +31,7 @@ inline fun <reified Value> Aggregate<Int>.timeRepGossip(
     return timeReplicated(
         currentTime = currentTime,
         maxReplicas = 4,
-        timeToSpawn = 3.seconds,
+        timeToSpawn = 9.seconds,
         process = process,
     )
 }
@@ -51,6 +52,8 @@ fun Aggregate<Int>.timeRepGossipEntrypoint(
     device: CollektiveDevice<*>,
     timeSensor: TimeSensor,
 ): Double {
+    device.environment.networkDiameter()
+
     val localValue = randomFromTimeElapsed(timeSensor, randomGenerator).also { env["local-value"] = it }
     val selector: (Double, Double) -> Double = if (env["findMax"]) ::maxOf else ::minOf
     return timeRepGossip(
@@ -58,3 +61,4 @@ fun Aggregate<Int>.timeRepGossipEntrypoint(
         process = { nonStabilizingGossip(value = localValue, reducer = selector) },
     ).also { env["gossip-value"] = it }
 }
+
