@@ -470,7 +470,7 @@ def plot_experiments_comparison(data, metric, nodes, selector, y_label='', walk=
     plt.rcParams.update({'font.size': 15})
     plt.rcParams.update({'legend.loc': 0})
 
-    colors = sns.color_palette("viridis", n_colors=len(data) + 2)
+    colors = sns.color_palette("viridis", n_colors=len(data))
     fig, ax1 = plt.subplots(figsize=(9, 5))
 
     for j, (experiment, (mean_df, std_df)) in enumerate(data.items()):
@@ -480,12 +480,12 @@ def plot_experiments_comparison(data, metric, nodes, selector, y_label='', walk=
             y=metric,
             label=beautify_experiment_name(experiment),
             ax=ax1,
-            color=colors[j + 2],
+            color=colors[j],
         )
 
         upper = mean_df[metric] + std_df[f'{metric}-std']
         lower = mean_df[metric] - std_df[f'{metric}-std']
-        ax1.fill_between(mean_df['time'], lower, upper, color=colors[j + 2], alpha=0.2)
+        ax1.fill_between(mean_df['time'], lower, upper, color=colors[j], alpha=0.2)
 
     ax1.set_xlim(0, 200)
     ax1.set_ylim(-0.1, None)
