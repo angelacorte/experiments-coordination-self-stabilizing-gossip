@@ -1,3 +1,17 @@
+## [1.1.2](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.1...1.1.2) (2026-02-19)
+
+### Bug Fixes
+
+* experiments name in plotter ([9821f17](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/9821f176b2ce62df55e1d516dd79022473a3ebfd))
+* node param name in plotter ([6bc1902](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/6bc19022a45889bc881bb4fffb4687489baa7759))
+* RMSE calculation in ErrorExtractor ([29fce64](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/29fce647b7362782e913ef0bf15b04d084e654e1))
+* swap comparator functions in gossipMin and gossipMax ([0cc29b5](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/0cc29b534123a806c6da742e5251250dec3a500a))
+* update parameter name ([7787589](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/7787589ba1254be2c99ba3d8f51722ef68db7e32))
+
+### General maintenance
+
+* **release:** update gradle.properties .env versions to 1.1.1 [skip ci] ([75c98f1](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/75c98f1069eaae36e91985bec00ec658573e2a67))
+
 ## [1.1.1](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.0...1.1.1) (2026-02-18)
 
 ### Bug Fixes
