@@ -1,3 +1,17 @@
+## [1.1.5](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.4...1.1.5) (2026-02-20)
+
+### Dependency updates
+
+* **deps:** update dependency xarray to v2026.2.0 ([#3](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/3)) ([cbfb300](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/cbfb3001a959c2f5ba68484072adf732aaf62a09))
+
+### Bug Fixes
+
+* docker images ([bd0552a](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/bd0552a03a07ae750d81cd3867c38e4f2391e45b))
+
+### General maintenance
+
+* **release:** update gradle.properties .env versions to 1.1.4 [skip ci] ([49b9241](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/49b92412ea98ae8cebb701da44fac598db41776c))
+
 ## [1.1.4](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.3...1.1.4) (2026-02-20)
 
 ### Dependency updates
