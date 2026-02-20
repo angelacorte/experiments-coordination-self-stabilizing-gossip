@@ -24,10 +24,11 @@ services:
     environment:
       - MAX_SEED=1
       - GRADLE_TASK=runSplitAndMergeNonStabGossipBatch
+      - JAVA_TOOL_OPTIONS=-Xms512m -Xmx1500m -XX:+UseG1GC -XX:MaxRAMPercentage=75
 
   time-replicated-gossip-split-and-merge:
     depends_on:
-      prepare:
+      non-stabilizing-gossip-split-and-merge:
         condition: service_completed_successfully
     image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}-time-replicated
     build:
@@ -38,10 +39,11 @@ services:
     environment:
       - MAX_SEED=1
       - GRADLE_TASK=runSplitAndMergeTimeRepGossipBatch
+      - JAVA_TOOL_OPTIONS=-Xms512m -Xmx1500m -XX:+UseG1GC -XX:MaxRAMPercentage=75
 
   self-stabilizing-gossip-split-and-merge:
     depends_on:
-      prepare:
+      time-replicated-gossip-split-and-merge:
         condition: service_completed_successfully
     image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}-self-stabilizing
     build:
@@ -52,6 +54,7 @@ services:
     environment:
       - MAX_SEED=1
       - GRADLE_TASK=runSplitAndMergeSelfStabGossipBatch
+      - JAVA_TOOL_OPTIONS=-Xms512m -Xmx1500m -XX:+UseG1GC -XX:MaxRAMPercentage=75
 
   charts:
     depends_on:
