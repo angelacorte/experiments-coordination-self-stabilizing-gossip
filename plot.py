@@ -511,7 +511,7 @@ def plot_experiments_comparison(data, metric, nodes, selector, y_label='', walk=
 from matplotlib import pyplot as plt
 simType = ['sm']
 metrics = ['RMSE'] #'MEAN',, 'MAE'
-totalNodes = [2, 10, 50, 100]
+totalNodes = [2, 10, 50]
 findMax = [True, False]
 experiments = ['self-stab-gossip-sm', 'non-stab-gossip-sm', 'time-rep-gossip-sm']
 
