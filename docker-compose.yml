@@ -1,37 +1,89 @@
 services:
+  prepare:
+    image: alpine:3.20.3
+    volumes:
+      - .:/experiment:rw
+    entrypoint: /bin/sh -c
+    command:
+      - |
+        mkdir -p /experiment/data
+        chmod 777 /experiment/data
+        mkdir -p /experiment/charts
+        chmod 777 /experiment/charts
+
   non-stabilizing-gossip-split-and-merge:
+    depends_on:
+      prepare:
+        condition: service_completed_successfully
     image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}-non-stabilizing
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
     volumes:
-      - angela.cortecchia-volume:/experiment/data
+      - ./data:/experiment/data
     environment:
-      - MAX_SEED=31
+      - MAX_SEED=1
       - GRADLE_TASK=runSplitAndMergeNonStabGossipBatch
 
   time-replicated-gossip-split-and-merge:
+    depends_on:
+      prepare:
+        condition: service_completed_successfully
     image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}-time-replicated
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
     volumes:
-      - angela.cortecchia-volume:/experiment/data
+      - ./data:/experiment/data
     environment:
-      - MAX_SEED=31
+      - MAX_SEED=1
       - GRADLE_TASK=runSplitAndMergeTimeRepGossipBatch
 
   self-stabilizing-gossip-split-and-merge:
+    depends_on:
+      prepare:
+        condition: service_completed_successfully
     image: angelacortecchia/experiments-coordination-self-stabilizing-gossip:${VERSION:-latest}-self-stabilizing
     build:
       context: .
       dockerfile: docker/sim/Dockerfile
     volumes:
-      - angela.cortecchia-volume:/experiment/data
+      - ./data:/experiment/data
     environment:
-      - MAX_SEED=31
+      - MAX_SEED=1
       - GRADLE_TASK=runSplitAndMergeSelfStabGossipBatch
 
-volumes:
-  angela.cortecchia-volume:
-    external: true
+  charts:
+    depends_on:
+      prepare:
+        condition: service_completed_successfully
+      non-stabilizing-gossip-split-and-merge:
+        condition: service_completed_successfully
+      self-stabilizing-gossip-split-and-merge:
+        condition: service_completed_successfully
+      time-replicated-gossip-split-and-merge:
+        condition: service_completed_successfully
+    image: angelacortecchia/${PROJECT_NAME:-unknown}-charts:${VERSION:-latest}
+    build:
+      dockerfile: ./docker/charts/Dockerfile
+      context: .
+    volumes:
+      - ./data:/experiment/data
+      - ./charts:/experiment/charts
+
+  finish:
+    depends_on:
+      charts:
+        condition: service_completed_successfully
+      prepare:
+        condition: service_completed_successfully
+    image: alpine:3.20.3
+    volumes:
+      - .:/experiment:rw
+    entrypoint: /bin/sh -c
+    command:
+      - |
+        find /experiment/data -type d -exec chmod 777 {} \;
+        find /experiment/charts -type d -exec chmod 777 {} \;
+        find /experiment/data -type f -exec chmod 666 {} \;
+        find /experiment/charts -type f -exec chmod 666 {} \;
