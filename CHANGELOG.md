@@ -1,3 +1,20 @@
+## [1.1.4](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.3...1.1.4) (2026-02-20)
+
+### Dependency updates
+
+* **deps:** update dependency matplotlib to v3.10.8 ([#1](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/1)) ([dff9649](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/dff9649b825ff4fefc8cf404a0150df2253dd565))
+
+### Bug Fixes
+
+* minors in doc ([073b997](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/073b99754fa6cfa24d9f159c5e2b3142b7a4f081))
+* title ([c2b83a7](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/c2b83a7a85c5e80345913cb5515c4c0e6a07f765))
+* update readme ([a782bb6](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/a782bb67be1c13ce30096992f3d017c0a3a8e011))
+
+### General maintenance
+
+* add readme snapshots ([9b59291](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/9b59291df72bd95b4a2aeba65dc12b7341b23e5e))
+* **release:** update gradle.properties .env versions to 1.1.3 [skip ci] ([77a81b1](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/77a81b177eb749300c782a77bf25852805f06cbe))
+
 ## [1.1.3](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.2...1.1.3) (2026-02-19)
 
 ### Bug Fixes
