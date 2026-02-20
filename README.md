@@ -1,4 +1,4 @@
-# A Self-Stabilizing, Field-Based Min-Max Consensus Gossip Based on Path-loop Detection
+# A Self-Stabilizing Min-Max Consensus via Path-loop Detection
 
 This artifact is associated with the regular paper article submitted in the Main Track of the COORDINATION 2025 conference.
 
