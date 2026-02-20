@@ -1,3 +1,14 @@
+## [1.1.7](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.6...1.1.7) (2026-02-20)
+
+### Bug Fixes
+
+* number of seeds same as evaluation ([f27c873](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/f27c8734060d6570b4d342448b36497c85c3695f))
+
+### General maintenance
+
+* minors in readme ([dcc5ac8](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/dcc5ac88383d1ba149e3c4bcdd783a0e3466d533))
+* **release:** update gradle.properties .env versions to 1.1.6 [skip ci] ([c42e64d](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/c42e64d89c163ec431afd40d2e53c020114d9062))
+
 ## [1.1.6](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.5...1.1.6) (2026-02-20)
 
 ### Bug Fixes
