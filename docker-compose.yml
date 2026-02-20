@@ -22,7 +22,7 @@ services:
     volumes:
       - ./data:/experiment/data
     environment:
-      - MAX_SEED=1
+      - MAX_SEED=100
       - GRADLE_TASK=runSplitAndMergeNonStabGossipBatch
       - JAVA_TOOL_OPTIONS=-Xms512m -Xmx1500m -XX:+UseG1GC -XX:MaxRAMPercentage=75
 
@@ -37,7 +37,7 @@ services:
     volumes:
       - ./data:/experiment/data
     environment:
-      - MAX_SEED=1
+      - MAX_SEED=100
       - GRADLE_TASK=runSplitAndMergeTimeRepGossipBatch
       - JAVA_TOOL_OPTIONS=-Xms512m -Xmx1500m -XX:+UseG1GC -XX:MaxRAMPercentage=75
 
@@ -52,7 +52,7 @@ services:
     volumes:
       - ./data:/experiment/data
     environment:
-      - MAX_SEED=1
+      - MAX_SEED=100
       - GRADLE_TASK=runSplitAndMergeSelfStabGossipBatch
       - JAVA_TOOL_OPTIONS=-Xms512m -Xmx1500m -XX:+UseG1GC -XX:MaxRAMPercentage=75
 
