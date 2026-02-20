@@ -19,6 +19,8 @@ Alma Mater Studiorum --- Università di Bologna - Cesena, Italy*
 - [Getting Started](#getting-started)
     - [Requirements](#requirements)
     - [Limitations](#limitations)
+    - [Understanding the experiments](#understanding-the-experiments)
+    - [Walk-through the experiments](#walk-through-the-experiments)
     - [Reproduce the entire experiment](#reproduce-the-entire-experiment)
         * [Simulation Graphical Interface](#simulation-graphical-interface)
         * [Extremely quick-start of a basic experiment -- `(ba|z|fi)?sh` users only](#extremely-quick-start-of-a-basic-experiment----bazfish-users-only)
@@ -35,7 +37,7 @@ Alma Mater Studiorum --- Università di Bologna - Cesena, Italy*
 
 In large-scale distributed systems, such as the Internet of Things (IoT),
 min-max consensus algorithms provide a mechanism for collective coordination
-by enabling nodes to converge on a ``best'' value produced by one of the participants in the computation.
+by enabling nodes to converge on a "best" value produced by one of the participants in the computation.
 However,
 min-max consensus algorithms are monotonic and non-self-stabilizing by nature:
 once a value is merged into the aggregate it cannot be retracted,
@@ -46,10 +48,10 @@ ensuring convergence to the best available value in the network
 by propagating information along shortest valid paths.
 Each gossip message carries a value and path of nodes that have acknowledged it,
 enabling loop-freedom and natural pruning of obsolete contributions.
-We rely on field-based coordination and specifically the \acl{ac}
+We rely on field-based coordination and specifically the Aggregate Computing
 paradigm to present the algorithm, prove self-stabilization,
 and
-provide an implementation as a reusable library for the \ck{} DSL.
+provide an implementation as a reusable library for the Collektive DSL.
 %and finally empirically demonstrate that the proposed solution preserves the locality
 %and lightweight nature of gossip while ensuring global consistency and robustness to disconnections.
 This work contributes a foundational building block for resilient coordination in pervasive computing systems,
@@ -58,12 +60,29 @@ self-stabilizing distributed applications.
 
 ### Experiments
 
-Included experiments and what they demonstrate:
+The evaluation is carried out through simulation in a spatial network where devices are placed in a two-dimensional area 
+and communicate only with neighbors within a fixed communication range.
+This produces a proximity-based topology: 
+nodes form a multi-hop network whose structure depends entirely on their geometric distribution. 
+There is no central coordination—each device periodically executes the gossip update using only locally available information.
 
-- `gossip.yml` self-stabilizing min/max gossip based on path-loop detection.
-- `splitAndMergeNonStabGossip.yml` baseline non-stabilizing min/max gossip in a split & merge topology.
-- `splitAndMergeSelfStabGossip.yml` self-stabilizing min/max gossip in a split & merge topology.
-- `splitAndMergeTimeRepGossip.yml` non-stabilizing gossip wrapped by time replication for self-stabilization in a split & merge topology.
+At the start of each simulation, 
+nodes hold independent values and begin exchanging information asynchronously. 
+Through repeated local interactions, 
+information propagates across the network and the system converges to the value selected by the gossip operator.
+Once the network reaches a stable agreement, 
+we deliberately introduce disruptions to test the self-stabilizing behavior under realistic dynamic conditions.
+
+Figure below illustrates the self-stabilizing behavior of the algorithm under topology changes through a sequence of simulation snapshots. 
+Each node is represented as a circle, 
+and the color encodes the value currently held by that node (i.e., the output of the min-consensus computation). 
+Nodes sharing the same color have already agreed on the same value.
+
+|   ![starting_structure](./snapshots/gossip06.png)    |        ![self-organised_structure](./snapshots/gossip09.png)        |
+|:----------------------------------------------------:|:-------------------------------------------------------------------:|
+|     *Structure partitioned after stabilization*      |                *Re-stabilization after partitioning*                |
+| ![structure_after_cutting](./snapshots/gossip10.png) | ![self-organised_structure_after_cutting](./snapshots/gossip11.png) |
+|                 *Reconnection phase*                 |                     *Restored global agreement*                     | 
 
 ## Getting started
 
@@ -89,6 +108,23 @@ and all the project dependencies are listed in the `gradle\libs.versions.toml` f
 - "batch mode" does not show any graphical interface;
 - For GUI interpretation, please refer to the [Simulation Graphical Interface](#simulation-graphical-interface) section.
 
+### Understanding the experiments
+
+The experiments are designed to evaluate the behavior of the proposed self-stabilizing min-max consensus algorithm under different conditions.
+The main experiment, named _gossip_, simulates a basic gossip protocol where nodes exchange information and converge to a consensus value.
+The other experiments, named _splitAndMergeNonStabGossip_, _splitAndMergeSelfStabGossip_, and _splitAndMergeTimeRepGossip_, 
+simulate a scenario where the network is partitioned, the nodes values are changed, and then the network is reconnected,
+to evaluate the self-stabilizing behavior of the algorithm under topology changes.
+
+In all the experiments, nodes are represented as circles, and the color encodes the value currently held by that node (i.e., the output of the min-max-consensus computation).
+Shared colors indicate agreement on the same value among nodes, while different colors represent different values.
+Lines are communication links, indicating which nodes are within communication range and can exchange information.
+
+The experiments are:
+- _gossip_: basic gossip experiment;
+- _splitAndMergeNonStabGossip_: non-stabilizing min/max gossip in a split & merge topology;
+- _splitAndMergeSelfStabGossip_: the proposed self-stabilizing min/max gossip in a split & merge topology;
+- _splitAndMergeTimeRepGossip_: non-stabilizing gossip wrapped by time replication for self-stabilization in a split & merge topology.
 
 ### Walk-through the experiments
 
@@ -237,6 +273,10 @@ while the `nonStabilizingGossip` is taken from the latest published version of t
 ### Reproduce the experiment results
 
 **WARNING**: re-running the whole experiment may take a very long time on a normal computer.
+
+**Note** that the _gossip_ experiment is not included in the batch experiments, 
+as it is a basic experiment used for demonstration purposes, 
+and it is not used for data collection and analysis.
 
 To collect the data for the analysis and the charts,
 the experiments have to be run in "batch mode,"
