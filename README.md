@@ -106,7 +106,8 @@ and all the project dependencies are listed in the `gradle\libs.versions.toml` f
   We suggest running the experiments in "graphic mode" to have a better understanding of the simulation;
 - On different monitor types with different resolutions, the graphical interface could appear a bit different;
 - "batch mode" does not show any graphical interface;
-- For GUI interpretation, please refer to the [Simulation Graphical Interface](#simulation-graphical-interface) section.
+- For GUI interpretation, please refer to the [Simulation Graphical Interface](#simulation-graphical-interface) section;
+- Due to Alchemist's limitations, the graphical interface will not appear if run on a docker container.
 
 ### Understanding the experiments
 
@@ -142,9 +143,14 @@ Note that the optional `MAX_SEED` is a parameter used for batch experiments,
 which allows running the experiment with a fixed number of seeds, but it does not affect the graphical experiments.
 
 Once the simulation has started, the Alchemist GUI will open.
-Once the simulation starts, the Alchemist GUI will appear.
 After Alchemist finishes loading, you will see the initial setup:
 the nodes distributed throughout the environment, with `NaN` as their initial value.
+The nodes may be initially hidden, depending on your monitor resolution and the default zoom level of the GUI, 
+but they are present in the simulation, and it is just necessary to zoom out or move around the environment to see them.
+To move around the environment, you can use the mouse to drag the view, and the scroll wheel to zoom in and out.
+To move the nodes, press <kbd>S</kbd> to enter the "selection mode," then select the nodes you want to move by dragging a box around them, 
+and then press <kbd>O</kbd> and move the selected nodes to the desired position.
+All the shortcuts for the GUI can be found in the [Alchemist documentation](https://alchemistsimulator.github.io/reference/swing/index.html#shortcuts).
 
 For more details of the simulation (e.g., the appearance, the meaning of the different colors, etc.)
 see the section [Understanding the experiments](#understanding-the-experiments).
@@ -153,6 +159,7 @@ By pressing the <kbd>P</kbd> key again, the simulation will pause (and resume).
 When the simulation starts,
 if you wish to execute it at "real time" speed,
 press the <kbd>R</kbd> key (and again to return to the fast speed).
+Note that you can move the nodes at any time during the simulation, even when it is running, to see how the system reacts to topology changes.
 For other features of the GUI, please refer to the [Simulation Graphical Interface](#simulation-graphical-interface) section.
 
 ### Reproduce the entire experiment
