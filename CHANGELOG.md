@@ -1,3 +1,14 @@
+## [1.1.6](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.5...1.1.6) (2026-02-20)
+
+### Bug Fixes
+
+* add JAVA_TOOL_OPTIONS for memory management in docker-compose ([a0cf41b](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/a0cf41b2c506102e05259156bd43306c094c091f))
+* update totalNodes parameter in configuration files ([ab22d84](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/ab22d8461230907805a0afb98cf4c01162740042))
+
+### General maintenance
+
+* **release:** update gradle.properties .env versions to 1.1.5 [skip ci] ([4f2a024](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/4f2a024dd974bdf0d141656250b6555b03259224))
+
 ## [1.1.5](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.4...1.1.5) (2026-02-20)
 
 ### Dependency updates
