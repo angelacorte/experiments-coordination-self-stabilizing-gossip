@@ -1,4 +1,4 @@
 matplotlib ==3.10.8
 xarray ==2026.2.0
 seaborn ==0.13.2
-pandas ==3.0.0
+pandas ==3.0.1
