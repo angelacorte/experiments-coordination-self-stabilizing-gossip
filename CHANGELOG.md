@@ -1,3 +1,13 @@
+## [1.1.9](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.8...1.1.9) (2026-02-23)
+
+### Dependency updates
+
+* **core-deps:** update kotlin to v2.3.10 ([#2](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/2)) ([fc94b6e](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/fc94b6e55e9f82b7656518dbd912309351346d17))
+
+### General maintenance
+
+* **release:** update gradle.properties .env versions to 1.1.8 [skip ci] ([868dedd](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/868deddd1097b84c7fbca5c7a26d387831920b9f))
+
 ## [1.1.8](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.7...1.1.8) (2026-02-23)
 
 ### Dependency updates
