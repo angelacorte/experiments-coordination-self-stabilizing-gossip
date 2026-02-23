@@ -1,3 +1,19 @@
+## [1.1.8](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.7...1.1.8) (2026-02-23)
+
+### Dependency updates
+
+* **core-deps:** update collektive to v28 ([#12](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/12)) ([63a2372](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/63a2372a5f3a362b86d7bdff33dd0ded1926b281))
+* **deps:** update alchemist to v43.0.4 ([#6](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/6)) ([ec1e4b4](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/ec1e4b48900323bbcbc25f3ed1d132b23d5f2bac))
+* **deps:** update alchemist to v43.0.5 ([#11](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/11)) ([bf8a81f](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/bf8a81fb050789de3b10c7d2a03c94030bfd13ea))
+* **deps:** update alpine docker tag to v3.20.9 ([#7](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/7)) ([c018cde](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/c018cdefa04c3f72a67fa6e9d85eb2034bb50168))
+* **deps:** update alpine docker tag to v3.23.3 ([#8](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/8)) ([e400846](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/e40084632de79ecd01c2dc67c42312c9bb1eb5fb))
+* **deps:** update dependency pandas to v3.0.1 ([#9](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/9)) ([a17d429](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/a17d42919386f06f40057bb4c8572994b23dba82))
+* **deps:** update eclipse-temurin docker tag to v25 ([#10](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/10)) ([2ba7c17](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/2ba7c1758385354b1eb19a479fd8c5782c3d720c))
+
+### General maintenance
+
+* **release:** update gradle.properties .env versions to 1.1.7 [skip ci] ([8aea5db](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/8aea5dbafe7c98793eef614783220c579c5ebad4))
+
 ## [1.1.7](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.6...1.1.7) (2026-02-20)
 
 ### Bug Fixes
