@@ -1,3 +1,13 @@
+## [1.1.10](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.9...1.1.10) (2026-02-23)
+
+### Dependency updates
+
+* **core-deps:** update dependency it.unibo.collektive.collektive-plugin to v28.0.1 ([#13](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/13)) ([dc9093e](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/dc9093e1959d8466332f30254fb634644dd32a0f))
+
+### General maintenance
+
+* **release:** update gradle.properties .env versions to 1.1.9 [skip ci] ([f0620f7](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/f0620f7cfb3238fa236774e0c9b1110bfbbb9227))
+
 ## [1.1.9](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.8...1.1.9) (2026-02-23)
 
 ### Dependency updates
