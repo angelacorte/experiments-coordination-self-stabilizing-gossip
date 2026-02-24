@@ -42,6 +42,7 @@ However,
 min-max consensus algorithms are monotonic and non-self-stabilizing by nature:
 once a value is merged into the aggregate it cannot be retracted,
 leading to propagation of stale or incorrect data in the presence of transient faults or topology changes.
+
 In this work,
 we propose a novel self-stabilizing min-max consensus algorithm
 ensuring convergence to the best available value in the network
@@ -50,10 +51,8 @@ Each gossip message carries a value and path of nodes that have acknowledged it,
 enabling loop-freedom and natural pruning of obsolete contributions.
 We rely on field-based coordination and specifically the Aggregate Computing
 paradigm to present the algorithm, prove self-stabilization,
-and
-provide an implementation as a reusable library for the Collektive DSL.
-%and finally empirically demonstrate that the proposed solution preserves the locality
-%and lightweight nature of gossip while ensuring global consistency and robustness to disconnections.
+and provide an implementation as a reusable library for the Collektive DSL.
+
 This work contributes a foundational building block for resilient coordination in pervasive computing systems,
 paving the way to more complex,
 self-stabilizing distributed applications.
@@ -94,7 +93,8 @@ In order to successfully download and execute the graphical experiments are need
 - Linux, macOS and Windows systems capable of running [Java](https://www.oracle.com/java/technologies/javase/jdk19-archive-downloads.html) 17 (or higher);
 - 4GB free space on disk (the system will automatically download its dependencies through Gradle);
 - GPU with minimal OpenGL capabilities (OpenGL 2.0);
-- 4GB RAM.
+- 4GB RAM;
+- Docker and docker-compose (optional, but recommended for batch experiments).
 
 The project uses [Gradle](https://gradle.org) as a build tool,
 and all the project dependencies are listed in the `gradle\libs.versions.toml` file.
@@ -120,6 +120,22 @@ to evaluate the self-stabilizing behavior of the algorithm under topology change
 In all the experiments, nodes are represented as circles, and the color encodes the value currently held by that node (i.e., the output of the min-max-consensus computation).
 Shared colors indicate agreement on the same value among nodes, while different colors represent different values.
 Lines are communication links, indicating which nodes are within communication range and can exchange information.
+
+The "split and merge" experiments are designed to evaluate the self-stabilizing behavior of the algorithm under topology changes.
+
+At the beginning of the simulation, devices compute a random value in $[-1, 1]$,
+and the algorithms are configured to find the minimum value in the network.
+After a stabilization period of $50s$,
+we introduce a network partition my moving all devices on the right side of the arena in a new arena.
+$50s$ after the partition,
+we add a second perturbation,
+by generating new random values for all devices in the network,
+this time in $[- 1/2, 1/2]$,
+and we observe how the different algorithms adapt to the new values in the network.
+Finally,
+we move the devices back to the first area,
+returning to the initial topology,
+and wait for further $50s$, for a total duration of $200s$.
 
 The experiments are:
 - _gossip_: basic gossip experiment;
