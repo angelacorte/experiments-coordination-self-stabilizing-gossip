@@ -90,7 +90,7 @@ Nodes sharing the same color have already agreed on the same value.
 In order to successfully download and execute the graphical experiments are needed:
 - Internet connection;
 - [Git](https://git-scm.com);
-- Linux, macOS and Windows systems capable of running [Java](https://www.oracle.com/java/technologies/javase/jdk19-archive-downloads.html) 17 (or higher);
+- Linux, macOS and Windows systems capable of running [Java](https://www.oracle.com/java/technologies/javase/jdk19-archive-downloads.html) 17 or 21;
 - 4GB free space on disk (the system will automatically download its dependencies through Gradle);
 - GPU with minimal OpenGL capabilities (OpenGL 2.0);
 - 4GB RAM;
