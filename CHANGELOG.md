@@ -1,3 +1,22 @@
+## [1.2.1](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/v1.2.0...1.2.1) (2026-03-09)
+
+### Dependency updates
+
+* **deps:** update alchemist to v43.0.6 ([#15](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/15)) ([79bf450](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/79bf4506c5b1ba08335006a219d085b440b1a5cf))
+* **deps:** update alchemist to v43.0.7 ([#16](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/16)) ([0073445](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/0073445dbd8a43c5aaa181372762ffe7aa6c293d))
+* **deps:** update alchemist to v43.0.8 ([#18](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/18)) ([f3d75ae](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/f3d75aeb45ac04af29f249aee7b1d2d5bb485bd8))
+* **deps:** update alchemist to v43.0.9 ([#19](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/19)) ([5a8222e](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/5a8222e6c6080cd00d5e2450e1701f00e4d3f74b))
+* **deps:** update node.js to 24.14 ([#17](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/17)) ([84bcefc](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/84bcefcf555044b36920727d16c3965d0633910f))
+
+### Bug Fixes
+
+* java version in readme's requirements ([5153fcf](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/5153fcfe54fb3c0fae8a45f9adf18f0b07c7c980))
+* update java version in dockerfile ([dd6fcd5](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/dd6fcd5c24199a7e5e784ce856e4f2292b4ca28d))
+
+### Build and continuous integration
+
+* **deps:** update danysk/build-check-deploy-gradle-action action to v4.0.24 ([#14](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/issues/14)) ([a52ba20](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/commit/a52ba20d25d673541fb9f4be7b4847af33647197))
+
 ## [1.1.10](https://github.com/angelacorte/experiments-coordination-self-stabilizing-gossip/compare/1.1.9...1.1.10) (2026-02-23)
 
 ### Dependency updates
