@@ -1,6 +1,5 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.awt.GraphicsEnvironment
-import java.io.ByteArrayOutputStream
 import java.util.Locale
 
 plugins {
@@ -34,6 +33,12 @@ multiJvm {
     jvmVersionForCompilation.set(17)
 }
 
+java {
+    toolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
+
 dependencies {
     implementation(kotlin("stdlib"))
     if (!GraphicsEnvironment.isHeadless()) {
@@ -45,15 +50,18 @@ dependencies {
 val maxHeap: Long? by project
 val heap: Long =
     maxHeap ?: if (System.getProperty("os.name").lowercase().contains("linux")) {
-        ByteArrayOutputStream()
-            .use { output ->
-                exec {
-                    executable = "bash"
-                    args = listOf("-c", "cat /proc/meminfo | grep MemAvailable | grep -o '[0-9]*'")
-                    standardOutput = output
-                }
-                output.toString().trim().toLong() / 1024
-            }.also { println("Detected ${it}MB RAM available.") } * 9 / 10
+        // Gradle 9+: prefer Provider-based exec to avoid deprecated/removed Project.exec APIs
+        val memAvailableKb = providers
+            .exec {
+                commandLine("bash", "-c", "cat /proc/meminfo | grep MemAvailable | grep -o '[0-9]*'")
+            }
+            .standardOutput
+            .asText
+            .map { it.trim().toLong() }
+            .get()
+
+        (memAvailableKb / 1024)
+            .also { println("Detected ${it}MB RAM available.") } * 9 / 10
     } else {
         // Guess 16GB RAM of which 2 used by the OS
         14 * 1024L
@@ -148,4 +156,16 @@ tasks.withType(KotlinCompile::class).all {
     compilerOptions {
         allWarningsAsErrors = false
     }
+}
+
+tasks.withType<JavaExec>().configureEach {
+    javaLauncher.set(
+        javaToolchains.launcherFor {
+            languageVersion.set(
+                JavaLanguageVersion.of(
+                    Runtime.version().feature()
+                )
+            )
+        }
+    )
 }
